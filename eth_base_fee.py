@@ -6,7 +6,12 @@ import requests
 import unicornhathd
 from digits import digits
 
-url = 'http://192.168.0.10:8545'
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+url = os.getenv('ETH_EXECUTION_LAYER_URL')
 headers = {'content-type': 'application/json'}
 
 
