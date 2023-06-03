@@ -14,6 +14,12 @@ load_dotenv()
 url = os.getenv('ETH_EXECUTION_LAYER_URL')
 headers = {'content-type': 'application/json'}
 
+black = (0, 0, 0)  # "off"
+white = (255, 255, 255)
+red = (255, 0, 0)
+yellow = (255, 255, 0)
+green = (0, 255, 0)
+
 
 def get_block_number():
     payload = {
@@ -47,7 +53,7 @@ def display_digit(digit, offset_x):
     for y in range(5):
         for x in range(3):
             if pattern[y][x]:
-                unicornhathd.set_pixel(x + offset_x, 15 - y, 255, 255, 255)  # white
+                unicornhathd.set_pixel(x + offset_x, 15 - y, *white)
 
 
 def display_block_number(block_number):
@@ -60,14 +66,9 @@ def display_block_number(block_number):
     for y in range(2):
         for x in range(16):
             if binary_parts[y][x] == '1':
-                unicornhathd.set_pixel(x, y, 255, 255, 255)  # white
+                unicornhathd.set_pixel(x, y, *white)
             else:
-                unicornhathd.set_pixel(x, y, 0, 0, 0)  # off
-
-
-green = (0, 255, 0)
-yellow = (255, 255, 0)
-red = (255, 0, 0)
+                unicornhathd.set_pixel(x, y, *black)
 
 
 def set_bar_chart_pixels(my_list):
@@ -134,10 +135,10 @@ def display_fireball():
     ]
 
     colors = {
-        0: (0, 0, 0),      # Black (off)
+        0: (0, 0, 0),        # Black (off)
         1: (255, 255, 255),  # Yellow
-        2: (255, 165, 0),  # Orange
-        3: (255, 0, 0)     # Red
+        2: (255, 165, 0),    # Orange
+        3: (255, 0, 0)       # Red
     }
 
     for y in range(16):
@@ -148,12 +149,6 @@ def display_fireball():
 
 
 display_fireball()
-
-
-green = (0, 255, 0)
-black = (0, 0, 0)
-yellow = (255, 255, 0)
-red = (255, 0, 0)
 
 
 def display_countdown_timer():
@@ -267,21 +262,35 @@ try:
         unicornhathd.set_pixel(0, 11, *black)
         unicornhathd.show()
 
+
 except KeyboardInterrupt:
     unicornhathd.clear()
-    unicornhathd.set_pixel(1, 15, *red); unicornhathd.set_pixel(2, 15, *red)
-    unicornhathd.set_pixel(0, 14, *red); unicornhathd.set_pixel(1, 14, *red); unicornhathd.set_pixel(2, 14, *red); unicornhathd.set_pixel(3, 14, *red)
-    unicornhathd.set_pixel(0, 13, *red); unicornhathd.set_pixel(1, 13, *red); unicornhathd.set_pixel(2, 13, *red); unicornhathd.set_pixel(3, 13, *red)
-    unicornhathd.set_pixel(1, 12, *red); unicornhathd.set_pixel(2, 12, *red)
+    pixels = [
+        (1, 15), (2, 15),
+        (0, 14), (1, 14), (2, 14), (3, 14),
+        (0, 13), (1, 13), (2, 13), (3, 13),
+        (1, 12), (2, 12)
+    ]
+
+    for pixel in pixels:
+        unicornhathd.set_pixel(*pixel, *red)
+
     unicornhathd.show()
-    pass
+
 
 except Exception:
     traceback.print_exc()
     unicornhathd.clear()
-    unicornhathd.set_pixel(0, 15, *red); unicornhathd.set_pixel(4, 15, *red)
-    unicornhathd.set_pixel(1, 14, *red); unicornhathd.set_pixel(3, 14, *red)
-    unicornhathd.set_pixel(2, 13, *red)
-    unicornhathd.set_pixel(1, 12, *red); unicornhathd.set_pixel(3, 12, *red)
-    unicornhathd.set_pixel(0, 11, *red); unicornhathd.set_pixel(4, 11, *red)
+
+    pixels = [
+        (0, 15), (4, 15),
+        (1, 14), (3, 14),
+        (2, 13),
+        (1, 12), (3, 12),
+        (0, 11), (4, 11)
+    ]
+
+    for pixel in pixels:
+        unicornhathd.set_pixel(*pixel, *red)
+
     unicornhathd.show()
