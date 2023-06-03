@@ -268,7 +268,12 @@ try:
         unicornhathd.show()
 
 except KeyboardInterrupt:
-    # unicornhathd.off()
+    unicornhathd.clear()
+    unicornhathd.set_pixel(1, 15, *red); unicornhathd.set_pixel(2, 15, *red)
+    unicornhathd.set_pixel(0, 14, *red); unicornhathd.set_pixel(1, 14, *red); unicornhathd.set_pixel(2, 14, *red); unicornhathd.set_pixel(3, 14, *red)
+    unicornhathd.set_pixel(0, 13, *red); unicornhathd.set_pixel(1, 13, *red); unicornhathd.set_pixel(2, 13, *red); unicornhathd.set_pixel(3, 13, *red)
+    unicornhathd.set_pixel(1, 12, *red); unicornhathd.set_pixel(2, 12, *red)
+    unicornhathd.show()
     pass
 
 except Exception:
