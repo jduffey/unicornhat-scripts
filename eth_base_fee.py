@@ -75,16 +75,16 @@ def calculate_rgb(y):
     if y == 0:
         r = 0
         g = 0
-        b = 255
+        b = 1
     elif y <= 3:
         r = 0
-        g = int((y/3) * 255)
-        b = 255 - int((y/3) * 255)
+        g = y / 3
+        b = 1 - y / 3
     else:
-        r = 255
-        g = 255 - int(((y-4)/3) * 255)
+        r = 1
+        g = max(0, 1 - ((y - 4)/3))
         b = 0
-    return r, g, b
+    return int(r * 255), int(g * 255), int(b * 255)
 
 
 def set_bar_chart_pixels(my_list):

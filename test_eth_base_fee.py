@@ -11,9 +11,9 @@ from eth_base_fee import calculate_rgb
     (5, (255, 255 - int((1/3) * 255), 0)),
     (6, (255, 255 - int((2/3) * 255), 0)),
     (7, (255, 0, 0)),
-    (8, (255, -85, 0)),
-    (9, (255, -170, 0)),
-    (10, (255, -255, 0)),
+    (8, (255, 0, 0)),
+    (9, (255, 0, 0)),
+    (10, (255, 0, 0)),
 ])
 def test_calculate_rgb(y, expected):
     assert calculate_rgb(y) == expected
