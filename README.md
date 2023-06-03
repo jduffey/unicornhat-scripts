@@ -24,7 +24,7 @@ WantedBy=multi-user.target
 ```
 
 ## Configure the service to start on boot
-- `sudo systemctl enable unicornhathd.service`
+- `systemctl enable unicornhathd.service`
 - This command adds the service to the directory indicated in the .service file; in this case we install the service at `/etc/systemd/system/multi-user.target.wants`
 
 ## Notes
@@ -32,7 +32,7 @@ WantedBy=multi-user.target
 These instructions were tested on the `Raspbian GNU/Linux 11 (bullseye)` operating system.
 
 To view to status of the service:
-- `sudo systemctl status unicornhathd.service`
+- `systemctl status unicornhathd.service`
 
 To view logs of the service (for troubleshooting/debugging):
 - `journalctl -u unicornhathd.service`
