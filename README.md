@@ -16,7 +16,7 @@ Scripts designed for the Pimoroni Unicorn HAT HD Raspberry Pi display module.
 - `python3 eth_base_fee.py`
 
 
-# Instructions for running automatically when Raspberri Pi starts
+# Instructions for running automatically when Raspberry Pi starts
 
 ## Create the .service file
 - Create `/etc/systemd/system/unicornhathd.service` with the following contents.
